@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html id="html" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="./images/leaf.png" type="image/x-icon">
+    <meta name="Basil" content="Basil Bombers">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="yellowgreen">
+    <title>Basil | Test Env</title>
+    <link rel="stylesheet" href="./css/main-style.css">
+    <link rel="stylesheet" href="./css/nav-style.css">
+    <style>
+        body{
+            text-align: center;
+        }
+        #timer{
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        button{
+            padding: 10px 20px;
+            font-size: 1em;
+        }
+        
+    </style>
+
+</head>
+<body id="body">
+    <input type="button" value="🍀 >" id="showHideBtn" class="hide-nav-btn shrink-nav-btn"></button>
+    <div id='navigation' class='nav-hidden'> 
+        <div class="navelements">
+        <a href="index.html"><input class="nav-buttons" type="button" value="Home"></button></a>
+        <a href="basil-land.html"><input class="nav-buttons" type="button" value="Basil Land"></button></a>
+        <a href="airgap.html"><input class="nav-buttons" type="button" value="AirGap"></button></a>
+        <!-- <a href="#"><input class="nav-buttons" type="button" value="Info"></button></a> -->
+        <!-- <a href="#"><input class="nav-buttons" type="button" value="Other"></button></a> -->
+        <a href="#"><input id="darkmode" class="nav-buttons" type="button" value="Dark mode active"></button></a>
+        </div>
+    </div>
+    
+    
+    
+    <p id="timer" class="tooltip">00:00:00</p>
+    <button onclick="start()">Start</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="reset()">Reset</button>
+
+    
+
+
+    <div id="cursor"></div>
+</body>
+<script>
+    
+   
+    let timerInterval;
+    let hours = 45, minutes = 23, seconds = 40;
+
+    function start(){
+        timerInterval = setInterval(updateTimer, 1000)
+    }
+
+    function stop(){
+        clearInterval(timerInterval)
+    }
+
+    function reset(){
+        clearInterval(timerInterval);
+        hours = 0
+        minutes = 0
+        seconds = 0
+        updateTimer()
+    }
+
+    function updateTimer(){
+        seconds--;
+        if(seconds === 0){
+            seconds = 60;
+            minutes--;
+            if(minutes === 0){
+                minutes = 60;
+                hours--
+
+            }
+        }
+        document.getElementById('timer').textContent = formatTime(hours) + ":" + formatTime(minutes) + ":" + formatTime(seconds);
+    }
+
+    function formatTime(time){
+        return (time < 10 ? "0" : "") + time;
+    }
+
+</script>
+<script type="module" src="./js/navigation-script.js"></script>
+<script type="module" src="./js/darkmode-script.js"></script>
+<!-- <script type="module" src="./js/back-script.js"></script> -->
+<script type="module" src="./js/test-env-script.js"></script>
+</html>

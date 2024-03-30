@@ -1,0 +1,107 @@
+.key-container{
+    width: 821px;
+    height: 288px;
+    margin-left:calc(50% - 410px);
+    border: 1px solid var(--main-color1);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+/* ROW 2 KEYS */
+.keys-row-2{
+    height:50px;
+}
+
+/* ROW 3, 4, 5 KEYS */
+.keys-row-3, .keys-row-4, .keys-row-5{
+    margin-top: 5px;
+    height:50px;
+}
+
+/* ROW 6 KEYS */
+.keys-row-6{
+    display: inline-block;
+    margin-top: 5px;
+    height:50px;
+}
+
+#KeyA,#KeyB,#KeyC,#KeyD,#KeyE,#KeyF,#KeyG,#KeyH,#KeyI,
+#KeyJ,#KeyK,#KeyL,#KeyM,#KeyN,#KeyO,#KeyP,#KeyQ,#KeyR,
+#KeyS,#KeyT,#KeyU,#KeyV,#KeyW,#KeyX,#KeyY,#KeyZ,#Digit1,#Digit2,
+#Digit3,#Digit4,#Digit5,#Digit6,#Digit7,#Digit8,#Digit9,
+#Digit0,#Minus,#Equal,#Backquote,#BracketLeft,#BracketRight,#Semicolon,
+#Quote,#Backslash,#IntlBackslash,#Slash,#ControlLeft,#MetaLeft,
+#AltLeft,#AltRight,#ControlRight,#Comma,#Period,#NAB,#Mouse1,#Mouse2,#Wheel,
+#Tab,#Backspace,#CapsLock,#Enter,#ShiftLeft,#ShiftRight,
+#Space,#ArrowUp,#ArrowDown,#ArrowLeft,#ArrowRight{
+    width:50px;
+    height:50px;
+    border:none;
+    box-shadow: 0px 0px 2px black;
+    background-color: Black;
+    color:var(--main-color1);
+    border-radius: 5px;
+}
+#Tab{
+    width:75px;
+}
+#Backspace{
+    width:75px;
+}
+#CapsLock{
+    width:90px;
+}
+#Enter{
+    width:90px;
+}
+#ShiftLeft{
+    width:70px;
+}
+#ShiftRight{
+    width:110px;
+}
+#Space{
+    width:305px;
+}
+.arrows{
+    display: contents;
+}
+#ArrowUp,#ArrowDown,#ArrowLeft,#ArrowRight{
+    position: relative;
+    height:22px;
+}
+#ArrowUp{
+    top:-15px;
+    left:-3px;
+}
+#ArrowDown{
+    top:-27px;
+    left:696px;
+}
+#ArrowRight{
+    top:-27px;
+    left:693px;
+}
+#ArrowLeft{
+    top:10px;
+}
+.mouse-buttons{
+    position: absolute;
+    min-width: 200px;
+    margin-left:calc(50% + 455px);
+    top: 400px;
+}
+.pressed{
+    background-color: var(--main-color1)!important;
+    color:black !important;
+    border: 1px solid black !important;
+    box-shadow: 0px 0px 2px black;
+}
+.shifted{
+    background-color: var(--main-color1) !important;
+    color: black !important;
+}
+
+.key-contaiener.input[type="button"]:focus{
+    border:none;
+}

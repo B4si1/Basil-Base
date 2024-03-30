@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html id="html" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="./images/leaf.png" type="image/x-icon">
+    <meta name="Basil" content="Basil Bombers">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="yellowgreen">
+    <title>Basil | Trees</title>
+    <link rel="stylesheet" href="./css/main-style.css">
+    <link rel="stylesheet" href="./css/nav-style.css">
+    <link rel="stylesheet" href="./css/trees-style.css">
+</head>
+<body id="body">
+    <input type="button" value="🍀 >" id="showHideBtn" class="hide-nav-btn shrink-nav-btn"></button>
+    <div id='navigation' class='nav-hidden'> 
+        <div class="navelements">
+        <a href="index.html"><input class="nav-buttons" type="button" value="Home"></button></a>
+        <a href="basil-land.html"><input class="nav-buttons" type="button" value="Basil Land"></button></a>
+        <a href="airgap.html"><input class="nav-buttons" type="button" value="AirGap"></button></a>
+        <!-- <a href="#"><input class="nav-buttons" type="button" value="Info"></button></a> -->
+        <!-- <a href="#"><input class="nav-buttons" type="button" value="Other"></button></a> -->
+        <a href="#"><input id="darkmode" class="nav-buttons" type="button" value="Dark mode active"></button></a>
+        </div>
+    </div>
+    <div class="content">
+    <h3>Save the Trees</h3>
+    <canvas id="canvas1" class="particle-canvas">
+        
+
+    </canvas>
+    <div class="scores">
+        <p id="blue">Water : </p>
+        <p id="green">Trees : </p>
+        <p id="red">Fires : </p>
+        <p id="total">Total : </p>
+    </div>
+    <!-- <div id="log">
+
+    </div> -->
+    <!-- <div class="controls">
+        <input id="trees" type="number" min="0" max="200" value="29"></input>
+        <input id="water" type="number" min="0" max="200" value="29"></input>
+        <input id="fire" type="number" min="0" max="200" value="2"></input>
+        <input id="start" type="button" value="Start">
+        <input id="stop" type="button" value="Stop">
+        <p id="screenlog"></p>
+    </div> -->
+    </div>
+   
+    <div id="cursor"></div>
+</body>
+<script type="module" src="./js/navigation-script.js"></script>
+<script type="module" src="./js/darkmode-script.js"></script>
+<script type="module" src="./js/back-script.js"></script>
+<script type="module" src="./js/trees-script.js"></script>
+</html>
