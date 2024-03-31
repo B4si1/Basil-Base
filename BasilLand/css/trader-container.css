@@ -8,20 +8,17 @@
     width: auto;
     min-width: 800px;
     overflow: hidden;
-    /* background-color: rgba(165, 42, 42, 0.295); */
     background-image: url(../images/trader-interior.png);
     background-position: bottom;
     background-repeat: no-repeat;
     border-bottom: 1px solid goldenrod;
     border-top: 1px solid goldenrod;
     border-radius: 5px;
-
 }
 
 .trader-header-container{
     display: flex;
     flex-direction: row;
-    /* width: 800px; */
     flex-wrap: nowrap;
     align-content: center;
     justify-content: space-around;
@@ -34,8 +31,8 @@
     text-align: center;
     justify-content: space-evenly;
     margin-top: -20px;
-    /* width: 800px; */
 }
+
 .trader-resource-title{
     display: flex;
     flex-direction: row;

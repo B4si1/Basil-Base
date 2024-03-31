@@ -1,7 +1,6 @@
 .event-log-container{
     background-image: url('../images/log-back.png');
     background-position: top;
-    /* background-attachment: fixed; */
     position: fixed;
     top: 150px;
     left: calc(50% + 505px);
@@ -21,7 +20,6 @@
 .event-log{
     text-align: right;
 }
-
 #event-show-button{
     color:yellowgreen;
     background-color: rgb(22, 20, 20);
@@ -46,8 +44,6 @@
 .eventlog-show-button-container{
     text-align: center;
 }
-
-
 .green, .red, .yellow, .orange, .purple{
     text-align: left;
     padding:-3px;

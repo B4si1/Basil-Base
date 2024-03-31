@@ -1,10 +1,4 @@
 .world-container{
-    /* font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif */
-    /* background-image: url('../images/town.jpg'); */
-    /* background-color: black; */
-    /* background-position: right; */
-    /* background-repeat: no-repeat; */
-    /* background-attachment: fixed; */
     position:absolute;
     left:calc(50% - 500px);
     top:10vh;
@@ -22,14 +16,14 @@
     margin-bottom: 0px;
     overflow: hidden;
     padding-top: 10px;
-    
-    
 }
+
 .world-head-container{
     margin-bottom: 0px;
     border-bottom: 1px solid goldenrod;
     border-radius: 3px;
 }
+
 .game-time{
     position: absolute;
     margin-top: 0px;
@@ -46,6 +40,7 @@
     height:auto;
    
 }
+
 .title{
     padding-top: 0px;
     margin-top: 0px;
@@ -53,6 +48,7 @@
     top:0;
     left:calc(50% - 50px);
 }
+
 .gold{
     position:absolute;
     right:0;
@@ -67,8 +63,8 @@
     align-items: center;
     width:200px;
     padding-bottom: 8px;
-
 }
+
 .pause{
     width:200px;
     color:red;
@@ -89,8 +85,8 @@
     /* width:800px; */
     opacity: 0.7;
     z-index: -99;
-   
 }
+
 .autosave-form{
     display: flex;
     flex-direction: row;
