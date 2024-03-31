@@ -1,42 +1,30 @@
 import { worldLogic } from "./game-loop-script.js"
 import { LogDisplay } from "./game-loop-script.js"
-import { buffer } from "./buff-display-script.js"
 
+import * as docElement from './doc-object-script.js';
+
+import { buffer } from "./buff-display-script.js"
+import { updateDisplay } from "./game-loop-script.js"
 import { hide } from "./helper-functions.js";
 
-import { updateDisplay } from "./game-loop-script.js"
-import { traderDisplay } from "./doc-object-script.js";
-import { traderUpkeep } from "./doc-object-script.js";
-import { towerUpkeep } from "./doc-object-script.js";
-import { traderStatusDisplay } from "./doc-object-script.js";
-import { towerStatusDisplay } from "./doc-object-script.js";
-import { openTraderBtn } from "./doc-object-script.js";
-import { openTowerBtn } from "./doc-object-script.js";
-
-import { autosave } from "./doc-object-script.js";
-
-import { saveBtn } from "./doc-object-script.js"
-import { resetBtn } from "./doc-object-script.js"
-import { eventLogDisplay } from "./doc-object-script.js"
-
 // Save Button Event Listener
-saveBtn.addEventListener('click', function(e){
+docElement.saveBtn.addEventListener('click', function(e){
     save()
 })
 
 // Reset Button Event Listener
-resetBtn.addEventListener('click', function(e){
+docElement.resetBtn.addEventListener('click', function(e){
     reset()
 })
 
 // Autosave Checkbox listener
-autosave.addEventListener('change', function(e){
-    if(autosave.value === 'enabled'){
-        autosave.value = 'disabled'
+docElement.autosave.addEventListener('change', function(e){
+    if(docElement.autosave.value === 'enabled'){
+        docElement.autosave.value = 'disabled'
         worldLogic.autosaveEnabled = false
     }else{
         worldLogic.autosaveEnabled = true
-        autosave.value = 'enabled'
+        docElement.autosave.value = 'enabled'
     }
 })
 
@@ -150,7 +138,7 @@ export function reset(){
     LogDisplay.reset();
     worldLogic.reset();
     updateDisplay()
-    eventLogDisplay.innerHTML = ''
+    docElement.eventLogDisplay.innerHTML = ''
     // Trader and Tower Resets 
     TraderAndTowerUIResetHelper()
     // Log
@@ -161,15 +149,15 @@ export function reset(){
 
 function TraderAndTowerUIResetHelper(){
     // Trader
-    hide(traderDisplay)
-    hide(openTraderBtn)
-    hide(traderUpkeep)
-    traderStatusDisplay.classList.add('upkeep')
-    traderStatusDisplay.innerHTML = `Closed!`
+    hide(docElement.traderDisplay)
+    hide(docElement.openTraderBtn)
+    hide(docElement.traderUpkeep)
+    docElement.traderStatusDisplay.classList.add('upkeep')
+    docElement.traderStatusDisplay.innerHTML = `Closed!`
     //Tower 
     // hide(towerDisplay)
-    hide(openTowerBtn)
-    hide(towerUpkeep)
-    towerStatusDisplay.classList.add('upkeep')
-    towerStatusDisplay.innerHTML = `Unbuilt!`
+    hide(docElement.openTowerBtn)
+    hide(docElement.towerUpkeep)
+    docElement.towerStatusDisplay.classList.add('upkeep')
+    docElement.towerStatusDisplay.innerHTML = `Unbuilt!`
 }

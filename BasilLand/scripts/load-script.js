@@ -1,17 +1,11 @@
 import { worldLogic } from "./game-loop-script.js";
 import { buffer } from "./buff-display-script.js";
 
+import * as docElement from './doc-object-script.js';
+
 import { hide } from "./helper-functions.js";
 import { show } from "./helper-functions.js";
 
-import { traderDisplay } from "./doc-object-script.js";
-import { openTraderBtn } from "./doc-object-script.js";
-import { openTowerBtn } from "./doc-object-script.js";
-import { traderUpkeep } from "./doc-object-script.js";
-import { towerUpkeep } from "./doc-object-script.js";
-import { towerStatusDisplay } from "./doc-object-script.js";
-import { traderStatusDisplay } from "./doc-object-script.js";
-import { towerDisplay } from "./doc-object-script.js";
 
 import { reset } from "./save-reset-script.js";
 import { save } from "./save-reset-script.js";
@@ -188,17 +182,17 @@ window.onload = function() {
 // Trader and Tower Load Helper
 export function traderAndTowerLoadUIHelper(type){
     if(type == 'basil-trader'){
-        traderStatusDisplay.classList.remove('upkeep')
-        traderStatusDisplay.innerHTML = `Open!`
-        hide(traderDisplay)
-        show(openTraderBtn)
-        show(traderUpkeep)
+        docElement.traderStatusDisplay.classList.remove('upkeep')
+        docElement.traderStatusDisplay.innerHTML = `Open!`
+        hide(docElement.traderDisplay)
+        show(docElement.openTraderBtn)
+        show(docElement.traderUpkeep)
     }else{
-        towerStatusDisplay.classList.remove('upkeep')
-        towerStatusDisplay.innerHTML = `Open!`
-        hide(towerDisplay)
-        show(openTowerBtn)
-        show(towerUpkeep)
+        docElement.towerStatusDisplay.classList.remove('upkeep')
+        docElement.towerStatusDisplay.innerHTML = `Open!`
+        hide(docElement.towerDisplay)
+        show(docElement.openTowerBtn)
+        show(docElement.towerUpkeep)
     }
 
 }

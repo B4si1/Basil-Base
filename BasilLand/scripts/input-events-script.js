@@ -165,3 +165,15 @@ createStorageBtn.addEventListener('click', upgradeStorage);
 createtowerBtn.addEventListener('click', createTower);
 openTraderBtn.addEventListener('click', () => openShopHelper('trader'));
 openTowerBtn.addEventListener('click', () => openShopHelper('tower'));
+
+
+document.addEventListener('click', function(e){
+    const target = e.target
+
+    if(target === foodCollection){
+        collectResource('food')
+    }else if(target === woodCollection){
+        collectResource('wood')
+    } 
+    // and add others in here ..
+})

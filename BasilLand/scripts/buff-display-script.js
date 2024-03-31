@@ -1,4 +1,4 @@
-import { buffDisplay } from "./doc-object-script.js";
+import * as docElement from './doc-object-script.js';
 
 class WorldBuffs {
     constructor() {
@@ -27,7 +27,7 @@ class WorldBuffs {
     }
 
     populateBuffBar() {
-        buffDisplay.innerHTML = this.log.map(buff => buff.image).join('');
+        docElement.buffDisplay.innerHTML = this.log.map(buff => buff.image).join('');
     }
 
     eventLog() {

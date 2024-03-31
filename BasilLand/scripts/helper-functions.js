@@ -16,4 +16,9 @@ export function hide(value){
     return value.classList.add('hide-class')
 }
 
-     
+export function capsFirstLetter(string) {
+    if (string.length === 0) {
+        return "";
+    }
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
