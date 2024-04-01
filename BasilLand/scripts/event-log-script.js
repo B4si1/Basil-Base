@@ -50,7 +50,7 @@ export function scrollEvents() {
 
 // Function to display red alerts
 export function redAlert(message) {
-    LogDisplay.eventLog(`${message}`, 'red', 'alert');
+    LogDisplay.eventLog(message, 'red', 'alert');
 }
 
 // Event listener for show/hide event log button

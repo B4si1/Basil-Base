@@ -1,7 +1,9 @@
 import * as docElement from './doc-object-script.js';
 
+import { redAlert } from "./event-log-script.js";
 import { worldLogic, LogDisplay } from "./game-loop-script.js";
 import { hide, show } from "./helper-functions.js";
+
 
 const resourceMultiplyer = {
     food: 2,
@@ -9,6 +11,22 @@ const resourceMultiplyer = {
     stone: 2,
     idea: 1,
 }
+
+let SHIFTED = false;
+
+document.addEventListener('keydown', function(e){
+    if (e.keyCode == '16'){
+        SHIFTED = true
+        console.log(SHIFTED)
+    }
+})
+
+document.addEventListener('keyup', function(e){
+    if (e.keyCode == '16'){
+        SHIFTED = false
+        console.log(SHIFTED)
+    }
+})
 
 // Function to handle resource collection
 function collectResource(resourceType) {
@@ -21,19 +39,23 @@ function collectResource(resourceType) {
 }
 
 // Function to handle assigning workers
-function assignWorker(workerType, log) {
+function assignWorker(workerType, log, shift) {
+    let increase = 1
+    shift && worldLogic.idleWorkers > 10 ? increase = 10 : increase = 1;
     if (worldLogic.idleWorkers > 0) {
-        worldLogic[workerType]++;
-        worldLogic.idleWorkers--;
+        worldLogic[workerType] += increase;
+        worldLogic.idleWorkers -= increase;
         LogDisplay.eventLog(`<img class="log-img-scale" src="./BasilLand/images/plu.png"></img> ${log} Worker`, 'green');
     }
 }
 
 // Function to handle recalling workers
-function recallWorker(workerType, log) {
+function recallWorker(workerType, log, shift) {
+    let decrease = 1
+    shift && worldLogic[workerType] > 10 ? decrease = 10 : decrease = 1;
     if (worldLogic[workerType] > 0) {
-        worldLogic[workerType]--;
-        worldLogic.idleWorkers++;
+        worldLogic[workerType] -= decrease;
+        worldLogic.idleWorkers += decrease;
         LogDisplay.eventLog(`<img class="log-img-scale" src="./BasilLand/images/minu.png"></img> ${log} Worker`, 'green');
     }
 }
@@ -123,14 +145,14 @@ docElement.foodCollection.addEventListener('click', () => collectResource('food'
 docElement.woodCollection.addEventListener('click', () => collectResource('wood'));
 docElement.stoneCollection.addEventListener('click', () => collectResource('stone'));
 docElement.ideaCollection.addEventListener('click', () => collectResource('idea'));
-docElement.assignFoodBtn.addEventListener('click', () => assignWorker('foodWorkers', 'Food'));
-docElement.assignWoodBtn.addEventListener('click', () => assignWorker('woodWorkers', 'Wood'));
-docElement.assignStoneBtn.addEventListener('click', () => assignWorker('stoneWorkers', 'Stone'));
-docElement.assignIdeaBtn.addEventListener('click', () => assignWorker('ideaWorkers', 'Idea'));
-docElement.recallFoodBtn.addEventListener('click', () => recallWorker('foodWorkers', 'Food'));
-docElement.recallWoodBtn.addEventListener('click', () => recallWorker('woodWorkers', 'Wood'));
-docElement.recallStoneBtn.addEventListener('click', () => recallWorker('stoneWorkers', 'Stone'));
-docElement.recallIdeaBtn.addEventListener('click', () => recallWorker('ideaWorkers', 'Idea'));
+docElement.assignFoodBtn.addEventListener('click', () => assignWorker('foodWorkers', 'Food', SHIFTED));
+docElement.assignWoodBtn.addEventListener('click', () => assignWorker('woodWorkers', 'Wood', SHIFTED));
+docElement.assignStoneBtn.addEventListener('click', () => assignWorker('stoneWorkers', 'Stone', SHIFTED));
+docElement.assignIdeaBtn.addEventListener('click', () => assignWorker('ideaWorkers', 'Idea', SHIFTED));
+docElement.recallFoodBtn.addEventListener('click', () => recallWorker('foodWorkers', 'Food', SHIFTED));
+docElement.recallWoodBtn.addEventListener('click', () => recallWorker('woodWorkers', 'Wood', SHIFTED));
+docElement.recallStoneBtn.addEventListener('click', () => recallWorker('stoneWorkers', 'Stone', SHIFTED));
+docElement.recallIdeaBtn.addEventListener('click', () => recallWorker('ideaWorkers', 'Idea', SHIFTED));
 docElement.createWorkerBtn.addEventListener('click', spawnWorker);
 docElement.createHouseBtn.addEventListener('click', createHouse);
 docElement.createTraderBtn.addEventListener('click', createTrader);

@@ -41,14 +41,15 @@ function applyTowerTempBuff(resourceType, buffName) {
             worldLogic.towerBuffProductionStatus[resourceType] = true;
             if (buffer.buffs[resourceType].status == false) {
                 buffer.buffs[resourceType].status = true; 
-            worldLogic.refinedIdeas -= BUFF_COSTS.tempBuff;
-            LogDisplay.eventLog(`<img class="log-img-scale" src="./BasilLand/images/${buffName}.png"></img> ${buffName} buff ${BUFF_DURATION} Days`, 'purple');
+                worldLogic.refinedIdeas -= BUFF_COSTS.tempBuff;
+                LogDisplay.eventLog(`<img class="log-img-scale" src="./BasilLand/images/${buffName}.png"></img> ${buffName} buff ${BUFF_DURATION} Days`, 'purple');
+            } else {
+                redAlert('Buff already active!');
+            }
         } else {
             redAlert('Buff already active!');
+
         }
-    } else {
-        redAlert('Not enough refined ideas'); 
-    }
     }
 };
 

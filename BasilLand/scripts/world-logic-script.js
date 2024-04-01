@@ -230,7 +230,7 @@ export class WorldLogic{
         this.food += handleResourceBuff(this.towerBuffProductionStatus.food, 0.01, 0.09, this.foodWorkers);
         this.wood += handleResourceBuff(this.towerBuffProductionStatus.wood, 0.01, 0.09, this.woodWorkers);
         this.stone += handleResourceBuff(this.towerBuffProductionStatus.stone, 0.01, 0.09, this.stoneWorkers);
-        this.idea += handleResourceBuff(this.towerBuffProductionStatus.idea, 0.002, 0.009, this.ideaWorkers);
+        this.idea += handleResourceBuff(this.towerBuffProductionStatus.idea, 0.002, 0.018, this.ideaWorkers);
     
         // Check for gold discovery by stone workers
         if (this.stoneWorkers > 0 && Math.floor(Math.random() * ((this.baseGoldFindChance / this.goldFind.chance) - this.stoneWorkers) - 1) === 1) {
