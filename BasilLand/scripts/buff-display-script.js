@@ -3,12 +3,12 @@ import * as docElement from './doc-object-script.js';
 class WorldBuffs {
     constructor() {
         this.buffs = {
-            food: { name: 'food-buff', status: false, timer: 10, image: `<img id="food-buff" src="./BasilLand/images/food.png" title="Farming" class="hidden"></img>` },
-            wood: { name: 'wood-buff', status: false, timer: 10, image: `<img id="wood-buff" src="./BasilLand/images/wood.png" title="Lumbering" class="hidden"></img>` },
-            stone: { name: 'stone-buff', status: false, timer: 10, image: `<img id="stone-buff" src="./BasilLand/images/stone.png" title="Mining" class="hidden"></img>` },
-            idea: { name: 'idea-buff', status: false, timer: 10, image: `<img id="idea-buff" src="./BasilLand/images/idea.png" title="Thinking" class="hidden"></img>` },
-            house: { name: 'house-buff', status: false, timer: 10, image: `<img id="house-buff" src="./BasilLand/images/roomupgrade.png" title="More Rooms" class="hidden"></img>` },
-            worker: { name: 'worker-buff', status: false, timer: 10, image: `<img id="worker-buff" src="./BasilLand/images/twinupgrade.png" title="Twins" class="hidden"></img>` }
+            food: { name: 'food-buff', status: false, timer: 10, image: `<img id="food-buff" src="./BasilLand/images/food.png" title="Farming" class="buff-img hidden"></img>` },
+            wood: { name: 'wood-buff', status: false, timer: 10, image: `<img id="wood-buff" src="./BasilLand/images/wood.png" title="Lumbering" class="buff-img hidden"></img>` },
+            stone: { name: 'stone-buff', status: false, timer: 10, image: `<img id="stone-buff" src="./BasilLand/images/stone.png" title="Mining" class="buff-img hidden"></img>` },
+            idea: { name: 'idea-buff', status: false, timer: 10, image: `<img id="idea-buff" src="./BasilLand/images/idea.png" title="Thinking" class="buff-img hidden"></img>` },
+            house: { name: 'house-buff', status: false, timer: 10, image: `<img id="house-buff" src="./BasilLand/images/roomupgrade.png" title="More Rooms" class="buff-img hidden"></img>` },
+            worker: { name: 'worker-buff', status: false, timer: 10, image: `<img id="worker-buff" src="./BasilLand/images/twinupgrade.png" title="Twins" class="buff-img hidden"></img>` }
         };
 
         this.log = Object.values(this.buffs);

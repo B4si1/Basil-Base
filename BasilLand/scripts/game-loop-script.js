@@ -268,9 +268,9 @@ document.addEventListener('keyup', function (e) {
         isPaused = false;
         gameLoop();
     }
-    if (textParse('basil', input)) {
-        cheat();
-    }
+    // if (textParse('basil', input)) {
+    //     cheat();
+    // }
     if (textParse('help', input)) {
         docElement.helpDisplay.classList.remove('hide-class');
     }
