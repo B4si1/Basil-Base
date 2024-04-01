@@ -25,14 +25,40 @@ const RESOURCE_SELL_PRICE = {
 
 // Constants defining buy prices for resources
 const RESOURCE_BUY_PRICE = {
-    food: 1,
-    wood: 1,
-    stone: 1,
+    food: 100,
+    wood: 100,
+    stone: 100,
     worker: 100,
 };
 
 // Storage limit constant
 const STORAGE_LIMIT = 99;
+
+// Function to sell a specific resource
+function sellResource(resourceType){
+    if(worldLogic[resourceType] > MIN_TRADE_VALUES[resourceType]){
+        worldLogic[resourceType] -= RESOURCE_SELL_PRICE[resourceType];
+        worldLogic.gold++;
+        LogDisplay.eventLog(`<img class="log-img-scale" src="./BasilLand/images/trader-seller.png"></img> Sold ${RESOURCE_SELL_PRICE[resourceType]} ${resourceType} for ${MIN_TRADE_VALUES.gold} gold!`, 'yellow');
+    } else {
+        redAlert(`Not enough ${resourceType} to sell!`);
+    }
+}
+
+// Function to buy a specific resource
+function buyResource(resourceType){
+    if(worldLogic[resourceType] < (worldLogic.townStorage[resourceType] * worldLogic.storage) - STORAGE_LIMIT){
+        if(worldLogic.gold >= MIN_TRADE_VALUES.gold){
+            worldLogic[resourceType] += RESOURCE_BUY_PRICE[resourceType];
+            worldLogic.gold--;
+            LogDisplay.eventLog(`<img class="log-img-scale" src="./BasilLand/images/trader-seller.png"></img> Bought ${RESOURCE_BUY_PRICE[resourceType]} ${resourceType} for ${MIN_TRADE_VALUES.gold} gold!`, 'yellow');
+        } else {
+            redAlert('Not enough gold!');
+        }
+    }else{
+        redAlert('Not enough storage!');
+    }
+}
 
 // Event listeners for selling and buying resources
 docElement.sellFoodBtn.addEventListener('click', () => sellResource('food'));
@@ -62,7 +88,7 @@ docElement.buyWorkerBtn.addEventListener('click', function(e){
     if(worldLogic.gold > RESOURCE_BUY_PRICE.worker){
         if(worldLogic.workers < worldLogic.maxWorkers){
             worldLogic.workers++;
-            worldLogic.gold -= RESOURCE_BUY_PRICE.worker; // Corrected the subtraction operator
+            worldLogic.gold -= RESOURCE_BUY_PRICE.worker; 
             LogDisplay.eventLog(`<img class="log-img-scale" src="./BasilLand/images/trader-seller.png"></img> Bought 1 worker for ${RESOURCE_BUY_PRICE.worker} gold!`, 'yellow');
         } else {
             redAlert('Town at capacity!');
@@ -71,32 +97,6 @@ docElement.buyWorkerBtn.addEventListener('click', function(e){
         redAlert('Not enough gold!');
     }
 });
-
-// Function to sell a specific resource
-function sellResource(resourceType){
-    if(worldLogic[resourceType] > MIN_TRADE_VALUES[resourceType]){
-        worldLogic[resourceType] -= RESOURCE_SELL_PRICE[resourceType];
-        worldLogic.gold++;
-        LogDisplay.eventLog(`<img class="log-img-scale" src="./BasilLand/images/trader-seller.png"></img> Sold ${RESOURCE_SELL_PRICE[resourceType]} ${resourceType} for ${RESOURCE_BUY_PRICE[resourceType]} gold!`, 'yellow');
-    } else {
-        redAlert(`Not enough ${resourceType}!`);
-    }
-}
-
-// Function to buy a specific resource
-function buyResource(resourceType){
-    if(worldLogic[resourceType] < (worldLogic.townStorage[resourceType] * worldLogic.storage) - STORAGE_LIMIT){
-        if(worldLogic.gold >= MIN_TRADE_VALUES.gold){
-            worldLogic[resourceType] += RESOURCE_BUY_PRICE[resourceType];
-            worldLogic.gold--;
-            LogDisplay.eventLog(`<img class="log-img-scale" src="./BasilLand/images/trader-seller.png"></img> Bought ${RESOURCE_BUY_PRICE[resourceType]} ${resourceType} for ${RESOURCE_SELL_PRICE[resourceType]} gold!`, 'yellow');
-        } else {
-            redAlert('Not enough gold!');
-        }
-    }else{
-        redAlert('Not enough storage!');
-    }
-}
 
 // Function to update trader button display
 export function updateTraderButtonDisplay(){

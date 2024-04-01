@@ -1,4 +1,5 @@
 import * as docElement from './doc-object-script.js';
+import { LogDisplay } from './game-loop-script.js';
 
 import { hide } from "./helper-functions.js";
 import { show } from "./helper-functions.js";
@@ -49,7 +50,7 @@ export function scrollEvents() {
 
 // Function to display red alerts
 export function redAlert(message) {
-    docElement.LogDisplay.eventLog(`${message}`, 'red', 'alert');
+    LogDisplay.eventLog(`${message}`, 'red', 'alert');
 }
 
 // Event listener for show/hide event log button
