@@ -25,16 +25,12 @@ export const openTowerBtn = document.getElementById('open-tower');
 export const buffDisplay = document.getElementById('buff-container');
 export const castleDisplay = document.getElementById('castle-shop-container');
 export const eventLogDisplay = document.getElementById('eventlog');
-
 export const gameTimeDisplay = document.getElementById('game-time');
 export const helpDisplay = document.getElementById('help-container');
-
 export const pausedDisplayText = document.getElementById('pause');
 export const startPauseControl = document.getElementById('pause-controls');
-
 export const towerDisplay = document.getElementById('tower-shop-container');
 export const traderDisplay = document.getElementById('trader-shop-container');
-
 export const foodCollection = document.getElementById('food-collector-image');
 export const woodCollection = document.getElementById('wood-collector-image');
 export const stoneCollection = document.getElementById('stone-collector-image');
