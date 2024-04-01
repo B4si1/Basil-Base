@@ -244,7 +244,7 @@ export class WorldLogic{
         // Check for gold discovery by stone workers
         if (this.stoneWorkers > 0 && Math.floor(Math.random() * ((this.baseGoldFindChance / this.goldFind.chance) - this.stoneWorkers) - 1) === 1) {
             this.gold++;
-            // LogDisplay.eventLog('<img class="log-img-scale" src="./BasilLand/images/gold.png"></img> Found Gold!', 'yellow');
+            LogDisplay.eventLog('<img class="log-img-scale" src="./BasilLand/images/gold.png"></img> Found Gold!', 'yellow');
         }
     
         // Check for resource shortages and apply storage limits
