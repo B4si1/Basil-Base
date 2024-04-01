@@ -1,16 +1,7 @@
 import { LogDisplay } from "./game-loop-script.js";
 
+import * as docElement from './doc-object-script.js';
 
-import { foodDisplay, housesDisplay, towerGoldBuffBtn, 
-    towerHouseBuffBtn, towerWorkerBuffBtn, workersDisplay 
-} from "./doc-object-script.js";
-import { woodDisplay } from "./doc-object-script.js";
-import { stoneDisplay } from "./doc-object-script.js";
-import { ideaDisplay } from "./doc-object-script.js";
-import { towerFoodBuffBtn } from "./doc-object-script.js";
-import { towerWoodBuffBtn } from "./doc-object-script.js";
-import { towerStoneBuffBtn } from "./doc-object-script.js";
-import { towerIdeaBuffBtn } from "./doc-object-script.js";
 
 // World Logic Class
 export class WorldLogic{
@@ -214,20 +205,20 @@ export class WorldLogic{
     
     updateBuffTimes() {
         // Update buff times for various buffs
-        this.handleBuff("food", foodDisplay, towerFoodBuffBtn, "food", '<img class="log-img-scale" src="./BasilLand/images/farmingminu.png"></img> Farming buff expired');
-        this.handleBuff("wood", woodDisplay, towerWoodBuffBtn, "wood", '<img class="log-img-scale" src="./BasilLand/images/lumberingminu.png"></img> Lumbering buff expired');
-        this.handleBuff("stone", stoneDisplay, towerStoneBuffBtn, "stone", '<img class="log-img-scale" src="./BasilLand/images/miningminu.png"></img> Mining buff expired');
-        this.handleBuff("idea", ideaDisplay, towerIdeaBuffBtn, "idea", '<img class="log-img-scale" src="./BasilLand/images/thinkingminu.png"> Thinking buff expired </img>');
+        this.handleBuff("food", docElement.foodDisplay, docElement.towerFoodBuffBtn, "food", '<img class="log-img-scale" src="./BasilLand/images/farmingminu.png"></img> Farming buff expired');
+        this.handleBuff("wood", docElement.woodDisplay, docElement.towerWoodBuffBtn, "wood", '<img class="log-img-scale" src="./BasilLand/images/lumberingminu.png"></img> Lumbering buff expired');
+        this.handleBuff("stone", docElement.stoneDisplay, docElement.towerStoneBuffBtn, "stone", '<img class="log-img-scale" src="./BasilLand/images/miningminu.png"></img> Mining buff expired');
+        this.handleBuff("idea", docElement.ideaDisplay, docElement.towerIdeaBuffBtn, "idea", '<img class="log-img-scale" src="./BasilLand/images/thinkingminu.png"> Thinking buff expired </img>');
     
         // Check if gold find level has reached maximum
         if (this.goldFind.level >= this.goldFind.levelmax) {
-            towerGoldBuffBtn.innerHTML = `Maxed!`;
-            towerGoldBuffBtn.style.backgroundColor = 'orange';
+            docElement.towerGoldBuffBtn.innerHTML = `Maxed!`;
+            docElement.towerGoldBuffBtn.style.backgroundColor = 'orange';
         }
     
         // Handle permanent buffs
-        this.handlePermanentBuff(this.towerUpgradeBuff.houseBuffStatus, housesDisplay, towerHouseBuffBtn);
-        this.handlePermanentBuff(this.towerUpgradeBuff.workerBuffStatus, workersDisplay, towerWorkerBuffBtn);
+        this.handlePermanentBuff(this.towerUpgradeBuff.houseBuffStatus, docElement.housesDisplay, docElement.towerHouseBuffBtn);
+        this.handlePermanentBuff(this.towerUpgradeBuff.workerBuffStatus, docElement.workersDisplay, docElement.towerWorkerBuffBtn);
     }
     
     updateResources() {
