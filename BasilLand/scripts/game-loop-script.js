@@ -268,9 +268,9 @@ document.addEventListener('keyup', function (e) {
         isPaused = false;
         gameLoop();
     }
-    if (textParse('basil', input)) {
-        cheat();
-    }
+    // if (textParse('basil', input)) {
+    //     cheat();
+    // }
     if (textParse('help', input)) {
         docElement.helpDisplay.classList.remove('hide-class');
     }
@@ -296,15 +296,15 @@ docElement.startPauseControl.addEventListener('click', function (e) {
     }
 });
 
-function cheat() {
-    // Cheat function to set initial game state
-    worldLogic.houses = 50;
-    worldLogic.workers = 140;
-    worldLogic.trader = 1;
-    worldLogic.tower = 1;
-    worldLogic.gold = 10000;
-    worldLogic.food = 10000;
-    worldLogic.wood = 10000;
-    worldLogic.stone = 10000;
-    worldLogic.refinedIdeas = 100000;
-}
+// function cheat() {
+//     // Cheat function to set initial game state
+//     worldLogic.houses = 50;
+//     worldLogic.workers = 140;
+//     worldLogic.trader = 1;
+//     worldLogic.tower = 1;
+//     worldLogic.gold = 10000;
+//     worldLogic.food = 10000;
+//     worldLogic.wood = 10000;
+//     worldLogic.stone = 10000;
+//     worldLogic.refinedIdeas = 100000;
+// }

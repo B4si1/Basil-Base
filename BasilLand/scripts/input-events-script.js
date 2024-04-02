@@ -140,7 +140,6 @@ function openShopHelper(type) {
     }
 }
 
-
 // consts for building and worker button types 
 const WORKERS = ['food', 'wood', 'stone', 'idea'];
 const BUILDING = ['Worker', 'House', 'Trader', 'Tower', 'Storage']
@@ -164,7 +163,6 @@ WORKERS.forEach(worker => {
   docElement[`recall${worker.charAt(0).toUpperCase() + worker.slice(1)}Btn`].addEventListener('click', () => recallWorker(`${worker}Workers`, `${worker.charAt(0).toUpperCase() + worker.slice(1)}`, SHIFTED));
   docElement[`${worker}Collection`].addEventListener('click', () => collectResource(worker));
 });
-
 
 docElement.openTraderBtn.addEventListener('click', () => openShopHelper('trader'));
 docElement.openTowerBtn.addEventListener('click', () => openShopHelper('tower'));
