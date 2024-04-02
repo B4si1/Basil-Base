@@ -17,7 +17,7 @@ export const createHouseBtn = document.getElementById('create-house');
 export const createStorageBtn = document.getElementById('create-storage');
 export const createTraderBtn = document.getElementById('create-trade-shop');
 export const createWorkerBtn = document.getElementById('create-worker');
-export const createtowerBtn = document.getElementById('create-tower');
+export const createTowerBtn = document.getElementById('create-tower');
 export const openTraderBtn = document.getElementById('open-trade-shop');
 export const openTowerBtn = document.getElementById('open-tower');
 

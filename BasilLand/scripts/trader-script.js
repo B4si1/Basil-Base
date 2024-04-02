@@ -60,13 +60,14 @@ function buyResource(resourceType){
     }
 }
 
-// Event listeners for selling and buying resources
-docElement.sellFoodBtn.addEventListener('click', () => sellResource('food'));
-docElement.sellWoodBtn.addEventListener('click', () => sellResource('wood'));
-docElement.sellStoneBtn.addEventListener('click', () => sellResource('stone'));
-docElement.buyFoodBtn.addEventListener('click', () => buyResource('food'));
-docElement.buyWoodBtn.addEventListener('click', () => buyResource('wood'));
-docElement.buyStoneBtn.addEventListener('click', () => buyResource('stone'));
+// Consts to store listeners
+const RESOURCES = ['food', 'wood', 'stone'];
+
+// For Loop to assign eventlisteners to the buy resources butttons
+RESOURCES.forEach(resource =>{
+    docElement[`buy${resource.charAt(0).toUpperCase() + resource.slice(1)}Btn`].addEventListener('click', () => buyResource(resource))
+    docElement[`sell${resource.charAt(0).toUpperCase() + resource.slice(1)}Btn`].addEventListener('click', () => sellResource(resource))
+});
 
 // Event listener for selling workers
 docElement.sellWorkerBtn.addEventListener('click', function(e){

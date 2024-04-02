@@ -17,12 +17,14 @@ let SHIFTED = false;
 document.addEventListener('keydown', function(e){
     if (e.keyCode == '16'){
         SHIFTED = true
+        console.log(SHIFTED)
     }
 })
 
 document.addEventListener('keyup', function(e){
     if (e.keyCode == '16'){
         SHIFTED = false
+        console.log(SHIFTED)
     }
 })
 
@@ -59,7 +61,7 @@ function recallWorker(workerType, log, shift) {
 }
 
 // Function to spawn a worker
-function spawnWorker() {
+function createWorker() {
     worldLogic.workers += worldLogic.workerSpawnRate;
     worldLogic.food -= worldLogic.workerCost.food;
     LogDisplay.eventLog('<img class="log-img-scale" src="./BasilLand/images/worker.png"></img> Worker Created', 'yellow');
@@ -87,7 +89,7 @@ function createTrader() {
 }
 
 // Function to upgrade storage
-function upgradeStorage() {
+function createStorage() {
     if (worldLogic.storage <= 49) {
         worldLogic.storage++;
         worldLogic.wood -= worldLogic.storageCost.wood;
@@ -138,24 +140,31 @@ function openShopHelper(type) {
     }
 }
 
-// Add event listeners
-docElement.foodCollection.addEventListener('click', () => collectResource('food'));
-docElement.woodCollection.addEventListener('click', () => collectResource('wood'));
-docElement.stoneCollection.addEventListener('click', () => collectResource('stone'));
-docElement.ideaCollection.addEventListener('click', () => collectResource('idea'));
-docElement.assignFoodBtn.addEventListener('click', () => assignWorker('foodWorkers', 'Food', SHIFTED));
-docElement.assignWoodBtn.addEventListener('click', () => assignWorker('woodWorkers', 'Wood', SHIFTED));
-docElement.assignStoneBtn.addEventListener('click', () => assignWorker('stoneWorkers', 'Stone', SHIFTED));
-docElement.assignIdeaBtn.addEventListener('click', () => assignWorker('ideaWorkers', 'Idea', SHIFTED));
-docElement.recallFoodBtn.addEventListener('click', () => recallWorker('foodWorkers', 'Food', SHIFTED));
-docElement.recallWoodBtn.addEventListener('click', () => recallWorker('woodWorkers', 'Wood', SHIFTED));
-docElement.recallStoneBtn.addEventListener('click', () => recallWorker('stoneWorkers', 'Stone', SHIFTED));
-docElement.recallIdeaBtn.addEventListener('click', () => recallWorker('ideaWorkers', 'Idea', SHIFTED));
-docElement.createWorkerBtn.addEventListener('click', spawnWorker);
-docElement.createHouseBtn.addEventListener('click', createHouse);
-docElement.createTraderBtn.addEventListener('click', createTrader);
-docElement.createStorageBtn.addEventListener('click', upgradeStorage);
-docElement.createtowerBtn.addEventListener('click', createTower);
+
+// consts for building and worker button types 
+const WORKERS = ['food', 'wood', 'stone', 'idea'];
+const BUILDING = ['Worker', 'House', 'Trader', 'Tower', 'Storage']
+
+// Store for function names
+const BUILDING_FUNCTIONS = {
+    Worker: {name: createWorker},
+    House: {name: createHouse},
+    Trader: {name: createTrader},
+    Tower: {name: createTower},
+    Storage: {name: createStorage}
+}
+// Loop for the building creation button event listeners
+BUILDING.forEach(building => {
+    docElement[`create${building}Btn`].addEventListener('click', BUILDING_FUNCTIONS[building].name);
+})
+
+// For Loop to assigh eventlisteners to the recall and assign buttons
+WORKERS.forEach(worker => {
+  docElement[`assign${worker.charAt(0).toUpperCase() + worker.slice(1)}Btn`].addEventListener('click', () => assignWorker(`${worker}Workers`, `${worker.charAt(0).toUpperCase() + worker.slice(1)}`, SHIFTED));
+  docElement[`recall${worker.charAt(0).toUpperCase() + worker.slice(1)}Btn`].addEventListener('click', () => recallWorker(`${worker}Workers`, `${worker.charAt(0).toUpperCase() + worker.slice(1)}`, SHIFTED));
+  docElement[`${worker}Collection`].addEventListener('click', () => collectResource(worker));
+});
+
+
 docElement.openTraderBtn.addEventListener('click', () => openShopHelper('trader'));
 docElement.openTowerBtn.addEventListener('click', () => openShopHelper('tower'));
-

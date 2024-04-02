@@ -203,7 +203,7 @@ function updateTownButtons() {
     // Show or hide town management buttons based on game state
     createButtonHelper(worldLogic.buildHouse, docElement.createHouseBtn);
     createButtonHelper(worldLogic.spawn, docElement.createWorkerBtn);
-    createButtonHelper(worldLogic.buildtower, docElement.createtowerBtn);
+    createButtonHelper(worldLogic.buildtower, docElement.createTowerBtn);
     createButtonHelper(worldLogic.buildStorage, docElement.createStorageBtn);
     createButtonHelper(worldLogic.buildTrader, docElement.createTraderBtn);
 
@@ -268,6 +268,9 @@ document.addEventListener('keyup', function (e) {
         isPaused = false;
         gameLoop();
     }
+    if (textParse('basil', input)) {
+        cheat();
+    }
     if (textParse('help', input)) {
         docElement.helpDisplay.classList.remove('hide-class');
     }
@@ -293,3 +296,15 @@ docElement.startPauseControl.addEventListener('click', function (e) {
     }
 });
 
+function cheat() {
+    // Cheat function to set initial game state
+    worldLogic.houses = 50;
+    worldLogic.workers = 140;
+    worldLogic.trader = 1;
+    worldLogic.tower = 1;
+    worldLogic.gold = 10000;
+    worldLogic.food = 10000;
+    worldLogic.wood = 10000;
+    worldLogic.stone = 10000;
+    worldLogic.refinedIdeas = 100000;
+}
