@@ -6,167 +6,99 @@ import * as docElement from './doc-object-script.js';
 import { hide } from "./helper-functions.js";
 import { show } from "./helper-functions.js";
 
-
 import { reset } from "./save-reset-script.js";
 import { save } from "./save-reset-script.js";
 
-function buffLoadHelper(buffString, buffStatePath){
-    console.log(`${typeof(buffString)} : ${typeof(buffStatePath)}`)
-    buffStatePath
-    if (localStorage.getItem(buffString) == 'true'){
-        buffStatePath = true
-    }else{
-        buffStatePath = false
-    }
+const BUFF_TYPES = {
+    production: 'productionStatus',
+    buffbar: 'buffBar',
+    perma: 'permaBuffStatus',
+    buildings: 'buildings',
 }
+
+function LoadHelper(buffType, storageName, loadType, buildingVariable){
+    switch(loadType) {
+        case BUFF_TYPES.production:
+            if (localStorage.getItem(storageName) == 'true'){
+                worldLogic.towerBuffProductionStatus[buffType] = true
+            }else{
+                worldLogic.towerBuffProductionStatus[buffType] = false
+            }
+          break;
+        case BUFF_TYPES.buffbar:
+            if(localStorage.getItem(storageName) == 'true'){
+                buffer.buffs[buffType].status = true
+            }else{
+                buffer.buffs[buffType].status = false
+            }
+          break;
+        case BUFF_TYPES.perma:
+            if(localStorage.getItem(storageName) == 'true'){
+                worldLogic.towerUpgradeBuff[buffType] = true
+            }else{
+                worldLogic.towerUpgradeBuff[buffType] = false
+            } 
+          break;
+        case BUFF_TYPES.buildings:
+            if(localStorage.getItem(storageName) == 0){
+                worldLogic[buffType] = buildingVariable;
+            }else{
+                worldLogic[buffType] = storage(storageName)
+                buffType == 'trader' ? traderAndTowerLoadUIHelper('basil-trader') : '';
+                buffType == 'tower' ? traderAndTowerLoadUIHelper('basil-tower') : '';
+            }
+          break;
+        default:
+          
+      }
+}
+
+const LOAD_NAMES = ['food', 'wood', 'stone', 'gold', 'idea', 'refinedIdeas', 'workers',
+'maxWorkers', 'houseCapacity', 'idleWorkers', 'foodWorkers', 'woodWorkers', 'stoneWorkers', 
+'ideaWorkers', 'autosave', 'autosaveEnabled',];
+
 // Load Function to load previous game 
 window.onload = function() {
     // Check to see if an instance is stored 
     // If true asign Saved values to Game instance
     // If false Use starting Values (New Game)
     if(localStorage.getItem(`basil-played`) == `true`){
-        worldLogic.food = storage('basil-food')
-        worldLogic.stone = storage('basil-stone')
-        worldLogic.wood = storage('basil-wood')
-        worldLogic.gold = storage('basil-gold')
-        worldLogic.idea = storage('basil-idea')
-        worldLogic.refinedIdeas = storage('basil-refinedIdeas')
-        worldLogic.workers = storage('basil-workers')
-        worldLogic.maxWorkers = storage('basil-maxWorkers')
-        worldLogic.houseCapacity = storage('basil-houseCapacity')
-        worldLogic.idleWorkers = storage('basil-idleWorkers')
-        worldLogic.foodWorkers = storage('basil-foodWorkers')
-        worldLogic.woodWorkers = storage('basil-woodWorkers')
-        worldLogic.stoneWorkers = storage('basil-stoneWorkers')
-        worldLogic.ideaWorkers = storage('basil-ideaWorkers')
-        worldLogic.goldFind.level = localStorage.getItem('basil-tower-gold-buff-level')
-        worldLogic.goldFind.chance = localStorage.getItem('basil-tower-gold-buff-chance')
-        worldLogic.workerSpawnRate = storage('basil-tower-worker-spawn-rate')
-        worldLogic.houseCapacity = storage('basil-tower-house-buff-houseCapacity')
-        worldLogic.autosave = storage('basil-autosave')
-        worldLogic.autosaveEnabled = localStorage.getItem('basil-autosaveEnabled')
 
-        // buffLoadHelper('basil-tower-food-buff', worldLogic.towerBuffProductionStatus.food)
-        // buffLoadHelper('basil-tower-wood-buff', worldLogic.towerBuffProductionStatus.wood)
-        // buffLoadHelper('basil-tower-stone-buff', worldLogic.towerBuffProductionStatus.stone)
-        // buffLoadHelper('basil-tower-idea-buff', worldLogic.towerBuffProductionStatus.idea)
-        // buffLoadHelper('basil-tower-house-buff', worldLogic.towerUpgradeBuff.houseBuffStatus)
-        // buffLoadHelper('basil-tower-worker-buff', worldLogic.towerUpgradeBuff.workerBuffStatus)
+        LOAD_NAMES.forEach(name => {
+            worldLogic[name] = storage(`basil-${name}`);
+        });
 
 
-        // buffLoadHelper('basil-buff-farming', buffer.food.status)
-        // buffLoadHelper('basil-buff-lumbering', buffer.wood.status)
-        // buffLoadHelper('basil-buff-mining', buffer.stone.status)
-        // buffLoadHelper('basil-buff-thinking', buffer.idea.status)
-        // buffLoadHelper('basil-buff-house', buffer.house.status)
-        // buffLoadHelper('basil-buff-worker', buffer.worker.status)
+        worldLogic.goldFind.level = localStorage.getItem('basil-tower-gold-buff-level');
+        worldLogic.goldFind.chance = localStorage.getItem('basil-tower-gold-buff-chance');
+        worldLogic.workerSpawnRate = storage('basil-tower-worker-spawn-rate');
+        worldLogic.houseCapacity = storage('basil-tower-house-buff-houseCapacity');
+        
 
-        if (localStorage.getItem('basil-tower-food-buff') == 'true'){
-            worldLogic.towerBuffProductionStatus.food = true
-        }else{
-            worldLogic.towerBuffProductionStatus.food = false
-        }
-        if (localStorage.getItem('basil-tower-wood-buff') == 'true'){
-            worldLogic.towerBuffProductionStatus.wood = true
-        }else{
-            worldLogic.towerBuffProductionStatus.wood = false
-        }
-        if (localStorage.getItem('basil-tower-stone-buff') == 'true'){
-            worldLogic.towerBuffProductionStatus.stone = true
-        }else{
-            worldLogic.towerBuffProductionStatus.stone = false
-        }
-        if (localStorage.getItem('basil-tower-idea-buff') == 'true'){
-            worldLogic.towerBuffProductionStatus.idea = true
-        }else{
-            worldLogic.towerBuffProductionStatus.idea = false
-        }
-        
-        if(localStorage.getItem('basil-tower-house-buff') == 'true'){
-            worldLogic.towerUpgradeBuff.houseBuffStatus = true
-        }else{
-            worldLogic.towerUpgradeBuff.houseBuffStatus = false
-        } 
-        if(localStorage.getItem('basil-tower-worker-buff') == 'true'){
-            worldLogic.towerUpgradeBuff.workerBuffStatus = true
-        }else{
-            worldLogic.towerUpgradeBuff.workerBuffStatus = false
-        } 
-        
-        if(localStorage.getItem('basil-buff-farming') == 'true'){
-            buffer.buffs.food.status = true
-        }else{
-            buffer.buffs.food.status = false
-        }
-        
-        if(localStorage.getItem('basil-buff-lumbering') == 'true'){
-            buffer.buffs.wood.status = true
-        }else{
-            buffer.buffs.wood.status = false
-        }
-        
-        if(localStorage.getItem('basil-buff-mining') == 'true'){
-            buffer.buffs.stone.status = true
-        }else{
-            buffer.buffs.stone.status = false
-        }
-
-        if(localStorage.getItem('basil-buff-thinking') == 'true'){
-            buffer.buffs.idea.status = true
-        }else{
-            buffer.buffs.idea.status = false
-        }
-        
-        if(localStorage.getItem('basil-buff-house') == 'true'){
-            buffer.buffs.house.status = true
-        }else{
-            buffer.buffs.house.status = false
-        }
-        
-        if(localStorage.getItem('basil-buff-worker') == 'true'){
-            buffer.buffs.worker.status = true
-        }else{
-            buffer.buffs.worker.status = false
-        }
-    
-        if(localStorage.getItem('basil-workers') == 0){
-            worldLogic.workers = 2;
-        }else{
-            worldLogic.workers = storage('basil-workers')
-        }
-        
-        if(localStorage.getItem('basil-houses') == 0){
-            worldLogic.houses = 1;
-        }else{
-            worldLogic.houses = storage('basil-houses')
-        }
+        // Production Buff Loaders
+        LoadHelper('food', 'basil-tower-food-buff', BUFF_TYPES.production);
+        LoadHelper('wood', 'basil-tower-wood-buff', BUFF_TYPES.production);
+        LoadHelper('stone', 'basil-tower-stone-buff', BUFF_TYPES.production);
+        LoadHelper('idea', 'basil-tower-idea-buff', BUFF_TYPES.production);
+        // BuffBar Loaders
+        LoadHelper('food', 'basil-buff-farming', BUFF_TYPES.buffbar);
+        LoadHelper('wood', 'basil-buff-lumbering', BUFF_TYPES.buffbar);
+        LoadHelper('stone', 'basil-buff-mining', BUFF_TYPES.buffbar);
+        LoadHelper('idea', 'basil-buff-thinking', BUFF_TYPES.buffbar);
+        LoadHelper('house', 'basil-buff-house', BUFF_TYPES.buffbar);
+        LoadHelper('worker', 'basil-buff-worker', BUFF_TYPES.buffbar);
+        // PermaBuff Ui Loaders
+        LoadHelper('houseBuffStatus', 'basil-tower-house-buff', BUFF_TYPES.perma)
+        LoadHelper('workerBuffStatus', 'basil-tower-worker-buff', BUFF_TYPES.perma)
+        // Building Loaders 
+        LoadHelper('workers', 'basil-workers', BUFF_TYPES.buildings, 2)
+        LoadHelper('houses', 'basil-houses', BUFF_TYPES.buildings, 1)
+        LoadHelper('storage', 'basil-storage', BUFF_TYPES.buildings, 1)
+        LoadHelper('worldTime', 'basil-time', BUFF_TYPES.buildings, 0)
+        LoadHelper('trader', 'basil-trader', BUFF_TYPES.buildings, 0)
+        LoadHelper('tower', 'basil-tower', BUFF_TYPES.buildings, 0)
+      
        
-        if(localStorage.getItem('basil-storage') == 0){
-            worldLogic.storage = 1;
-        }else{
-            worldLogic.storage = storage('basil-storage')
-        }
-        
-        if(localStorage.getItem('basil-trader') == 0){
-            worldLogic.trader = 0;
-        }else{
-            worldLogic.trader = localStorage.getItem('basil-trader')
-            traderAndTowerLoadUIHelper('basil-trader')
-        }
-
-        if(localStorage.getItem('basil-tower') == 0){
-            worldLogic.tower = 0;
-        }else{
-            worldLogic.tower = localStorage.getItem('basil-tower')
-            traderAndTowerLoadUIHelper('basil-tower')
-        }
-        
-        if(localStorage.getItem('basil-time') == 0){
-            worldLogic.worldTime = 0;
-        }else{
-            worldLogic.worldTime = storage('basil-time')
-        }
-    
     // Set played value to true, so that on load saved values know to load or start fresh
     }else{
         localStorage.setItem(`basil-played`, `true`)
@@ -177,25 +109,23 @@ window.onload = function() {
 };
 // localStorage.clear()
 
-
-
 // Trader and Tower Load Helper
 export function traderAndTowerLoadUIHelper(type){
     if(type == 'basil-trader'){
-        docElement.traderStatusDisplay.classList.remove('upkeep')
+        docElement.traderStatusDisplay.classList.remove('upkeep');
         docElement.traderStatusDisplay.innerHTML = `Open!`
-        hide(docElement.traderDisplay)
-        show(docElement.openTraderBtn)
-        show(docElement.traderUpkeep)
+        hide(docElement.traderDisplay);
+        show(docElement.openTraderBtn);
+        show(docElement.traderUpkeep);
     }else{
-        docElement.towerStatusDisplay.classList.remove('upkeep')
-        docElement.towerStatusDisplay.innerHTML = `Open!`
-        hide(docElement.towerDisplay)
-        show(docElement.openTowerBtn)
-        show(docElement.towerUpkeep)
+        docElement.towerStatusDisplay.classList.remove('upkeep');
+        docElement.towerStatusDisplay.innerHTML = `Open!`;
+        hide(docElement.towerDisplay);
+        show(docElement.openTowerBtn);
+        show(docElement.towerUpkeep);
     }
 
-}
+};
 
 // Load helper function
 function storage(text){

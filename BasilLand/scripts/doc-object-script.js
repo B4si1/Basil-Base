@@ -1,3 +1,5 @@
+export const worldWindow = document.getElementById('world-container')
+
 // Assign and Recall Buttons
 export const assignFoodBtn = document.getElementById('food-assign');
 export const assignIdeaBtn = document.getElementById('idea-assign');

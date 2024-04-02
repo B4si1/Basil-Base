@@ -17,12 +17,14 @@ let SHIFTED = false;
 document.addEventListener('keydown', function(e){
     if (e.keyCode == '16'){
         SHIFTED = true
+        console.log(SHIFTED)
     }
 })
 
 document.addEventListener('keyup', function(e){
     if (e.keyCode == '16'){
         SHIFTED = false
+        console.log(SHIFTED)
     }
 })
 
@@ -98,7 +100,7 @@ function createStorage() {
     }
     if (worldLogic.storage == 50) {
         docElement.createStorageBtn.innerHTML = 'Maxed!';
-        docElement.createHouseBtn.style.backgroundColor = 'orange';
+        docElement.createStorageBtn.style.backgroundColor = 'orange';
     }
 }
 
@@ -138,6 +140,8 @@ function openShopHelper(type) {
     }
 }
 
+
+
 // consts for building and worker button types 
 const WORKERS = ['food', 'wood', 'stone', 'idea'];
 const BUILDING = ['Worker', 'House', 'Trader', 'Tower', 'Storage']
@@ -153,7 +157,7 @@ const BUILDING_FUNCTIONS = {
 // Loop for the building creation button event listeners
 BUILDING.forEach(building => {
     docElement[`create${building}Btn`].addEventListener('click', BUILDING_FUNCTIONS[building].name);
-})
+});
 
 // For Loop to assigh eventlisteners to the recall and assign buttons
 WORKERS.forEach(worker => {
@@ -162,5 +166,7 @@ WORKERS.forEach(worker => {
   docElement[`${worker}Collection`].addEventListener('click', () => collectResource(worker));
 });
 
+
 docElement.openTraderBtn.addEventListener('click', () => openShopHelper('trader'));
 docElement.openTowerBtn.addEventListener('click', () => openShopHelper('tower'));
+

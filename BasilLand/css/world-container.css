@@ -9,7 +9,7 @@
 .world-container{
     position:absolute;
     left:calc(50% - 500px);
-    top:10vh;
+    top:2vh;
     display: flex;
     flex-direction: column;
     justify-content: right;
@@ -25,7 +25,9 @@
     overflow: hidden;
     padding-top: 10px;  
 }
-
+#world-container{
+    /* overflow-y: scroll; */
+}
 .world-head-container{
     margin-bottom: 0px;
     border-bottom: 1px solid goldenrod;
