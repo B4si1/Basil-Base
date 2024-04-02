@@ -17,8 +17,6 @@ let woodGather = 10;
 let stoneGather = 10;
 let ideaGather = 2;
 
-
-
 function addTowerBuffs() {
     // Apply tower buffs to resource gathering rates
     if (worldLogic.towerBuffProductionStatus.food == true) {
