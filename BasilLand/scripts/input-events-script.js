@@ -17,14 +17,12 @@ let SHIFTED = false;
 document.addEventListener('keydown', function(e){
     if (e.keyCode == '16'){
         SHIFTED = true
-        console.log(SHIFTED)
     }
 })
 
 document.addEventListener('keyup', function(e){
     if (e.keyCode == '16'){
         SHIFTED = false
-        console.log(SHIFTED)
     }
 })
 
