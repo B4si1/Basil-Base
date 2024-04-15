@@ -8,71 +8,97 @@
     <meta name="theme-color" content="yellowgreen">
     <title>Basil | Home</title>
     <link rel="stylesheet" href="./css/main-style.css">
-    <link rel="stylesheet" href="./css/index-style.css">
-    <link rel="stylesheet" href="./css/nav-style.css">
+    <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"crossorigin="anonymous"/>
 </head>
-<body id="body">
-    <input type="button" value="🍀 >" id="showHideBtn" class="hide-nav-btn shrink-nav-btn"></button>
-    <div id='navigation' class='nav-hidden'> 
-        <div class="navelements">
-        <a href="index.html"><input class="nav-buttons" type="button" value="Home"></button></a>
-        <!-- <a href="basil-land.html"><input class="nav-buttons" type="button" value="Basil Land"></button></a> -->
-        <a href="airgap.html"><input class="nav-buttons" type="button" value="AirGap"></button></a>
-        <a href="trees.html"><input class="nav-buttons" type="button" value="Trees"></button></a>
-        <a href="testenv.html"><input class="nav-buttons" type="button" value="Test Env"></button></a>
-        <!-- <a href="#"><input class="nav-buttons" type="button" value="Info"></button></a> -->
-        <!-- <a href="#"><input class="nav-buttons" type="button" value="Other"></button></a> -->
-        <a href="#"><input id="darkmode" class="nav-buttons" type="button" value="Dark mode active"></button></a>
-        </div>
-    </div>
-    <div class="header-content-container">
-        <h1> BASIL BASE </h1>
-    </div>
-    
-    <div class="main-content-wrapper">
-    <div class="main-content-container">
-        
-        <div class="summary-container">
-            <a href="./airgap.html">
-            <h3> AIRGAP </h3>
-            <div class="img-placeholder"><img src="./images/AirGap.png"></img></div>
-            <pre> Keylogger console..</pre></a>
-            
-        </div>
-        
-        <div class="summary-container">
-            <a href="https://basilweatherforecast.netlify.app" target="_blank">
-            <h3> WEATHER </h3>
-            <div class="img-placeholder"><img src="./images/weather.png"></img></div>
-            <pre> Simple Weather App..</pre>
-            </a>
-        </div>
-
+<body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#welcome">Welcome</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+  
+    <section id="welcome" class="section">
+      <div class="content">
+        <img src="./images/leaf.png" alt="Basil">
+        <h1>Hello, I'm Basil</h1>
+        <p class="green-italic"><i>an aspiring developer</i></p>
+      </div>
+    </section>
+  
+    <section id="projects" class="section">
+        <h1>Projects :</h1>
+        <br><br>
+      <div class="projects-content">
        
-        <div class="summary-container">
+
+        <div class="project">
             <a href="https://basilland.netlify.app/" target="_blank">
-            <h3> BASIL LAND </h3>
-            <div class="img-placeholder"><img src="./images/basilland.png"></img></div>
-            <pre> Fantasy Idle Game.. </pre>
+            <img src="./images/basilland.png"/>
+            <h2>Basil Land</h2>
+            <p class="green-italic">
+              <i>
+                Welcome to Resource Gatherer, an addictive idle clicker game where you collect resources and build your empire!
+              </i>
+            </p>
+              
             </a>
         </div>
         
-        
-        <div class="summary-container">
-            <a href="./testenv.html">
-            <h3> TEST ENV </h3>
-            <div class="img-placeholder"><img src="./images/testenv.png"></img></div>
-            <pre> Expect the unexpected, 
-or nothing..</pre>
-            </a>    
+        <div class="project">
+            <a href="https://github.com/B4si1/weather_forecast" target="_blank">
+            <img src="./images/weather.png"/>
+            <h2>Weather App</h2>
+            <p class="green-italic">
+              <i>
+                Basil Weather App is a small yet powerful project designed to provide users with a seamless and visually appealing weather forecasting experience.
+              </i>
+            </p>
+            </a>
         </div>
-            
-    </div>
-    </div>
 
-    <canvas id="canvas1"></canvas>
-</body>
-<script type="module" src="./js/navigation-script.js"></script>
-<script type="module" src="./js/darkmode-script.js"></script>
-<script src="./js/particle-script.js"></script>
-</html>
+        <div class="project">
+            <a href="https://airgapconsole.netlify.app/" target="_blank">
+            <img src="./images/AirGap.png"/>
+            <h2>AirGap Console</h2>
+            <p class="green-italic">
+              <i>
+                AirGap Console is a versatile keylogger application that not only captures screen information but also highlights pressed keys.
+              </i>
+            </p>
+            </a>
+        </div>
+        
+    </div>
+    </section>
+  
+    <section id="contact" class="section">
+      <div class="content">
+        <h1>Contact : </h1>
+        <p class="green-italic"><i>feel free to reach out..</i></p>
+        <div class="contact-links">
+          <a
+            id="profile-link"
+            href="https://github.com/B4si1"
+            target="_blank"
+            class="btn contact-details"
+            ><i class="fab fa-github"></i> GitHub | </a
+          >
+          <a
+            href="https://twitter.com/B4si1Dev"
+            target="_blank"
+            class="btn contact-details"
+            ><i class="fab fa-twitter"></i> Twitter</a
+          >
+          </div>
+      </div>
+    </section>
+  
+    <footer>
+      <p>&copy; 2024 Basil's Portfolio</p>
+    </footer>
+  </body>
+  </html>
