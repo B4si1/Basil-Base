@@ -133,7 +133,7 @@ footer {
 }
 
 .contact-links a:hover {
-    color: #055e11;
+    color: var(--main-green);
 }
 
 .green-italic {
