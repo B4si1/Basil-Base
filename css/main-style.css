@@ -28,13 +28,22 @@ html {
 }
 
 a{
+    font-size: 1.8rem; 
     text-decoration: none;
     color: var(--main-white);
 }
 
+a:hover{
+    cursor: url('../images/pointer.png'), auto;
+    color: yellowgreen;
+}
+
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: Jersy, sans-serif;
+    font-weight: 400;
+    font-style: normal;
     background-color: var(--main-gray);
     color: var(--main-white);
     cursor: url('../images/pointer-2.png'), auto;
@@ -57,10 +66,6 @@ nav ul {
 
 nav ul li {
     display: inline;
-}
-
-a:hover{
-    cursor: url('../images/pointer.png'), auto;
 }
 
 nav ul li a {
