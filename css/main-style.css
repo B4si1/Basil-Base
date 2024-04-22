@@ -9,6 +9,7 @@
 * {
     margin: 0;
     padding: 0;
+    
 }
 
 *,
@@ -26,6 +27,7 @@ html {
     box-sizing: border-box;
     font-size: 62.5%; 
     scroll-behavior: smooth;
+    cursor: url('../images/pointer-2.png') 10 10, auto;
 }
 
 a{
@@ -48,7 +50,7 @@ body {
     background-image: linear-gradient(45deg, var(--main-gray), var(--background-accent));
     /* background-color: var(--main-gray); */
     color: var(--main-white);
-    cursor: url('../images/pointer-2.png') 10 10, auto;
+    
 }
 
 header {
@@ -101,8 +103,8 @@ nav ul li a:active {
     justify-content: center;
     max-width: 400px;
     flex-wrap: wrap;
-    
 }
+
 .skills>p{
     border: 1px solid yellowgreen;
     padding: 5px;
@@ -151,6 +153,28 @@ p {
     font-size: 1.8rem; 
 }
 
+.socials{
+    position: fixed;
+    left:10px;
+    top:50%;
+    border: 1px solid yellowgreen;
+    
+    border-radius: 3px;
+    padding: 15px;
+}
+
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1.5rem; 
+    font-size: 2.4rem; 
+}
+
+.contact-links a:hover {
+    color: yellowgreen;
+}
+
 label {
     display: block;
     margin-bottom: 5px;
@@ -167,10 +191,17 @@ textarea {
 }
 
 button{
-    border: 1px solid yellowgreen;
+    border: 1px solid #055e11;
     padding: 5px;
     border-radius: 3px;
     margin: 5px;
+    background-color: #055e11;
+    color: #ccc;
+}
+
+button:hover{
+    cursor: url('../images/pointer.png')10 10, auto;
+    background-color: #027912;
 }
 
 footer {
@@ -185,14 +216,7 @@ footer {
     display: inline;
 }
 
-.contact-links {
-    margin-top: 1.5rem; 
-    font-size: 2.4rem; 
-}
 
-.contact-links a:hover {
-    color: yellowgreen;
-}
 
 .green-italic {
     color: var(--main-green);
