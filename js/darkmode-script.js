@@ -1,9 +1,24 @@
 const darkMode = document.getElementById("darkmode");
+const dark = document.querySelectorAll('section');
 
 darkMode.addEventListener('mouseup', function(e){
     toggleMode()
 })
 
+function updateMode(input){
+    switch(input){
+        case 'add':
+            dark.forEach(element => {
+                element.classList.add('light')})
+        break;
+        case 'remove':
+            dark.forEach(element => {
+                element.classList.remove('light')})
+        break;
+    }
+}
+
+    
 function checkDarkModeState(){
     if(localStorage.getItem('NightMode') == 'light'){
         document.body.classList.add('light')
@@ -31,11 +46,11 @@ checkDarkModeState();
 
 function light(x){
     if(x == 'add'){
-        document.body.classList.add('light')
+        updateMode('add')
         localStorage.setItem('NightMode', 'light');
         darkMode.innerHTML = "Dark 🌑 ";
     }else{
-        document.body.classList.remove('light')
+        updateMode('remove')
         localStorage.setItem('NightMode', 'dark');
         darkMode.innerHTML = "Light 🌕";
     }
